@@ -1,6 +1,6 @@
 name: "dotnet-sonarscanner"
 description: "Run analysis for dotnet core via dotnet-sonarscanner"
-author: "Joshua Duffy <mail@joshuaduffy.org>"
+author: "Anand <anand4nc@gmail.com>"
 
 inputs:
   buildCommand:
