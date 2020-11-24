@@ -37,9 +37,9 @@ jobs:
         with:
           buildCommand: dotnet build .
           testCommand: dotnet test .
-          projectKey: a-project-key
-          projectName: a-project-name
-          sonarOrganisation: an-org
+          projectKey: anand4nc_dotnet-sonarscanner
+          projectName: anand4nc_dotnet-sonarscanner
+          sonarOrganisation: anand4nc
           beginArguments: >
            /d:sonar.verbose="true"
            /d:sonar.cs.opencover.reportsPaths='"/path/to/coverage.xml","/path/to/coverage.2.xml"'
