@@ -32,18 +32,27 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      - name: Build and analyze
-        uses: Secbyte/dotnet-sonarscanner@v2.3
+      - name: sonarscan-dotnet
+  # You may pin to the exact commit or the version.
+  # uses: highbyte/sonarscan-dotnet@6584149b4962868d0a5808f58c56f591c9960925
+        uses: highbyte/sonarscan-dotnet@2.0
         with:
-          buildCommand: dotnet build .
-          testCommand: dotnet test .
-          projectKey: anand4nc_dotnet-sonarscanner
-          projectName: anand4nc_dotnet-sonarscanner
-          sonarOrganisation: anand4nc
-          beginArguments: >
-           /d:sonar.verbose="true"
-           /d:sonar.cs.opencover.reportsPaths='"/path/to/coverage.xml","/path/to/coverage.2.xml"'
-           /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
+    # The key of the SonarQube project
+         sonarProjectKey: anand4nc_dotnet-sonarscanner
+    # The name of the SonarQube project
+         sonarProjectName: anand4nc_dotnet-sonarscanner
+    # The name of the SonarQube organization in SonarCloud. For hosted SonarQube, skip this setting.
+         sonarOrganization: anand4nc
+    # Optional command arguments to 'dotnet build'
+         #dotnetBuildArguments: # optional
+    # Optional command arguments to 'dotnet test'
+         dotnetTestArguments: | # optional
+    # Optional. Set to 1 or true to not run 'dotnet test' command
+         dotnetDisableTests: | # optional
+    # Optional extra command arguments the the SonarScanner 'begin' command
+        #sonarBeginArguments: # optional
+    # The SonarQube server URL. For SonarCloud, skip this setting.
+         sonarHostname: https://sonarcloud.io
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
